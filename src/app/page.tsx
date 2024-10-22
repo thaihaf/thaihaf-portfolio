@@ -4,21 +4,26 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import {
+  ANIMATION_CONTENT_SCROLLUP,
   ANIMATION_SECTION_1,
   OVERVIEW_INFO,
+  SKILL_AND_EXPERTISE,
   SKILLS,
+  TOOLS,
 } from "@/constants/home.constants";
-import { Plus } from "lucide-react";
+import { Atom, Plus } from "lucide-react";
 import clsx from "clsx";
-import AnimatedCounter from "@/components/atoms/AnimatedCounter";
+import AnimatedCounter from "@/components/atoms/Home/AnimatedCounter";
+import Link from "next/link";
+import WrapperContent from "@/components/atoms/Home/WrapperContent";
 
 export default function Home() {
   return (
     <div className="mx-auto">
-      <div className="page-content flex flex-col items-center">
-        <section className="container flex flex-col items-center gap-8 text-center lg:!max-w-[750px] lg:!w-[90%] xs:!max-w-[950px] xs:!w-[100%]">
+      <div className="page-content flex-col-center">
+        <section className="container flex-col-center gap-8 text-center lg:!max-w-[750px] lg:!w-[90%] xs:!max-w-[950px] xs:!w-[100%]">
           <motion.div
-            className="flex flex-nowrap items-center gap-3 border-[var(--primary-border)] border-2 border-solid  p-2.5 pr-6 rounded-full"
+            className="flex-center flex-nowrap gap-3 border-primary p-2.5 pr-6 rounded-full"
             initial={ANIMATION_SECTION_1.initial}
             animate={ANIMATION_SECTION_1.animate}
             transition={{
@@ -100,7 +105,7 @@ export default function Home() {
               return (
                 <div
                   key={item}
-                  className="flex items-center gap-3 border-[var(--primary-border)] border-2 border-solid  px-5 py-2 rounded-full text-nowrap mx-2 text-base"
+                  className="flex items-center gap-3 border-primary px-5 py-2 rounded-full text-nowrap mx-2 text-base"
                 >
                   {item}
                 </div>
@@ -126,9 +131,9 @@ export default function Home() {
                     "bg-[var(--primary-bg)] text-[var(--medium-text)] rounded-[20px] ",
                     "lg:!p-[15px_20px_25px] lg:!rounded-t-none lg:!min-w-[200px] lg:!w-min",
                     isFirst &&
-                      "before:hidden lg:before:block before:absolute before:bg-white before:w-[60px] before:aspect-square before:left-[-45px] before:top-[-14px] before:rounded-full before:bg-[var(--primary-bg)] after:block after:absolute after:bg-white after:w-[80px] after:aspect-square after:left-[-80px] after:top-0 after:rounded-full after:bg-[var(--background)]",
+                      "before:hidden lg:before:block before:absolute before:w-[60px] before:aspect-square before:left-[-45px] before:top-[-14px] before:rounded-full before:bg-[var(--primary-bg)] after:block after:absolute after:w-[80px] after:aspect-square after:left-[-80px] after:top-0 after:rounded-full after:bg-[var(--background)]",
                     isLast &&
-                      "before:hidden lg:before:block before:absolute before:bg-white before:w-[60px] before:aspect-square before:right-[-45px] before:top-[-14px] before:rounded-full before:bg-[var(--primary-bg)] after:block after:absolute after:bg-white after:w-[80px] after:aspect-square after:right-[-80px] after:top-0 after:rounded-full after:bg-[var(--background)]"
+                      "before:hidden lg:before:block before:absolute before:w-[60px] before:aspect-square before:right-[-45px] before:top-[-14px] before:rounded-full before:bg-[var(--primary-bg)] after:block after:absolute after:w-[80px] after:aspect-square after:right-[-80px] after:top-0 after:rounded-full after:bg-[var(--background)]"
                   )}
                 >
                   <div className="flex items-center justify-center text-[38px] font-medium text-[#c9cace] lg:text-[44px] xs:text-[54px]">
@@ -143,6 +148,89 @@ export default function Home() {
             })}
           </div>
         </motion.section>
+
+        <WrapperContent
+          title={SKILL_AND_EXPERTISE.title}
+          desc={SKILL_AND_EXPERTISE.desc}
+          animationScroll={ANIMATION_CONTENT_SCROLLUP}
+        >
+          {SKILL_AND_EXPERTISE.items.map((item) => {
+            return (
+              <motion.div
+                key={item.id}
+                className={clsx(
+                  "border-primary p-1.5 bg-[var(--primary-bg)]",
+                  "rounded-3xl p-4"
+                )}
+              >
+                <div
+                  className={clsx(
+                    "bg-black rounded-3xl flex flex-col items-center justify-center gap-2",
+                    "border-primary h-52 group/item"
+                  )}
+                >
+                  <div
+                    className={clsx(
+                      "p-4 border-primary bg-[var(--primary-bg)] rounded-full box-shadow transition-all duration-300",
+                      "lg:translate-y-4 lg:group-hover/item:!translate-y-0"
+                    )}
+                  >
+                    <Atom size={32} />
+                  </div>
+                  <motion.div
+                    className={clsx(
+                      "text-[var(--secondary-text)] font-medium lg:opacity-0 lg:invisible transition-all duration-300",
+                      "hover:text-[var(--primary-text)] lg:group-hover/item:opacity-100 lg:group-hover/item:visible"
+                    )}
+                  >
+                    <Link href={"/work"}>View Projects</Link>
+                  </motion.div>
+                </div>
+
+                <div className="text-xl mt-5 mb-2.5">{item.label}</div>
+                <div className="text-[var(--secondary-text)] mb-4">
+                  {item.desc}
+                </div>
+              </motion.div>
+            );
+          })}
+        </WrapperContent>
+
+        <WrapperContent
+          title={TOOLS.title}
+          desc={TOOLS.desc}
+          animationScroll={ANIMATION_CONTENT_SCROLLUP}
+        >
+          {TOOLS.items.map((item) => {
+            return (
+              <motion.div
+                key={item.id}
+                className={clsx(
+                  "border-primary p-1.5 bg-[var(--background)]",
+                  "rounded-3xl p-4",
+                  "lg:!p-6"
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-3 w-fit border-primary bg-[var(--primary-bg)] rounded-xl">
+                    <Atom size={32} />
+                  </div>
+
+                  <Link
+                    href={""}
+                    className="text-xl font-bold transition-all duration-200 text-[#c9cace] hover:text-[var(--primary-text)]"
+                  >
+                    {item.label}
+                  </Link>
+                </div>
+
+                <div className="text-[var(--secondary-text)] mt-3.5 mb-2 text-left">
+                  {item.desc}
+                </div>
+              </motion.div>
+            );
+          })}
+        </WrapperContent>
       </div>
     </div>
   );

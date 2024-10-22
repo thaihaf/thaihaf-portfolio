@@ -32,18 +32,55 @@ body {
   min-width: 310px;
 }
 
-@layer utilities {
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-col-center {
+    @apply flex-center flex-col;
+  }
+
+  .border-primary {
+    @apply border-[var(--primary-border)] border-[1px] border-solid ;
+  }
+}
+
+@layer components {
   .container {
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 1500px;
+    @apply m-[0_auto] p-[0_20px] max-w-[1500px];
   }
   .page-content {
-    margin: 0 auto;
-    padding: 140px 0px 60px;
+    @apply m-[0_auto] p-[140px_0px_60px];
   }
-  .text-balance {
-    text-wrap: balance;
+
+  .home-group {
+    @apply container !mt-32 text-center !max-w-[460px] lg:!max-w-[1500px] lg:!p-[0_60px];
+  }
+
+  .home-title {
+    @apply text-3xl font-bold pb-4 lg:!text-[40px] xs:!text-[46px] text-3xl font-bold pb-4 lg:!text-[40px] xs:!text-[46px];
+  }
+
+  .home-desc {
+    @apply pb-8 text-[var(--secondary-text)] lg:!pb-14;
+  }
+
+  .home-items {
+    @apply grid grid-cols-1 gap-6 lg:grid-cols-2 xs:grid-cols-3;
+  }
+}
+
+@layer utilities {
+  .box-shadow {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+      rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+      rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   }
 
   .button-primary {
@@ -69,20 +106,5 @@ body {
       rgb(0, 0, 0) 92.5%,
       rgba(0, 0, 0, 0) 100%
     );
-  }
-
-  .overview-before::before {
-    display: block;
-    position: absolute;
-    width: 30px;
-    background: white;
-    aspect-ratio: 1/1;
-  }
-  .overview-after::after {
-    display: block;
-    position: absolute;
-    width: 30px;
-    background: white;
-    aspect-ratio: 1/1;
   }
 }

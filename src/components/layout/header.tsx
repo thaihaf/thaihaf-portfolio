@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <div className="container fixed z-50 w-full top-6 left-0 right-0">
-      <div className="m-auto w-fit flex gap-2.5 flex-nowrap items-center justify-center rounded-2xl border-[var(--primary-border)] border-2 border-solid p-1.5 bg-[var(--primary-bg)]">
+      <div className="m-auto w-fit flex-center gap-2.5 flex-nowrap p-1.5 border-primary bg-[var(--primary-bg)] rounded-2xl">
         {HEADER_ITEMS.map((item) => {
           const HeaderIcon = item.icon;
           const isActive = item.href === pathname;
