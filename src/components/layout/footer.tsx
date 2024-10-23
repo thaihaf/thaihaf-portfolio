@@ -1,6 +1,5 @@
 import React from "react";
 import avtImage from "@/images/avt.jpg";
-import linkedInIcon from "@/images/linkedin.png";
 import Image from "next/image";
 import {
   FOOTER_LINKS_STATUS,
@@ -10,6 +9,7 @@ import {
 import Link from "next/link";
 import clsx from "clsx";
 import LinkButton from "@/components/layout/LinkButton";
+import { MoveRight } from "lucide-react";
 export default function Footer() {
   return (
     <div className="container p-5 mt-3 ">
@@ -57,6 +57,7 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 className={clsx(
+                  "group/link relative",
                   "text-[var(--secondary-text)] text-lg flex-center gap-2.5 capitalize",
                   isDone
                     ? "hover:!text-[var(--primary-text)]"
@@ -64,9 +65,14 @@ export default function Footer() {
                 )}
               >
                 {link.label}
-                {!isDone && (
+
+                {!isDone ? (
                   <div className="px-2 border-primary rounded-lg capitalize">
                     {link.status}
+                  </div>
+                ) : (
+                  <div className="absolute left-[110%] overflow-hidden">
+                    <MoveRight className="transition-all duration-300 -translate-x-full group-hover/link:translate-x-0" />
                   </div>
                 )}
               </Link>
@@ -84,10 +90,15 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 className={clsx(
+                  "group/social relative",
                   "text-[var(--secondary-text)] text-lg flex-center gap-2.5 capitalize hover:!text-[var(--primary-text)]"
                 )}
               >
                 {link.label}
+
+                <div className="absolute left-[110%] overflow-hidden">
+                  <MoveRight className="transition-all duration-300 -translate-x-full group-hover/social:translate-x-0" />
+                </div>
               </Link>
             );
           })}

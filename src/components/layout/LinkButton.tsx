@@ -24,15 +24,15 @@ export default function LinkButton({
       <Link
         href={href}
         target={target}
-        className={clsx("flex-center gap-5", "group")}
+        className={clsx("flex-center gap-5", "group/link-switch")}
       >
-        <div className="text-[22px] text-[#c9cace] transition-all duration-300  group-hover:text-white">
+        <div className="text-[22px] text-[#c9cace] transition-all duration-300  group-hover/link-switch:text-white">
           {text}
         </div>
         <div className="border-primary bg-[var(--primary-bg)] p-2 rounded-full relative overflow-hidden">
-          <MoveUpRight className="transition-all duration-300 group-hover:translate-x-full group-hover:-translate-y-full" />
+          <MoveUpRight className="transition-all duration-300 group-hover/link-switch:translate-x-full group-hover/link-switch:-translate-y-full" />
           <div className="absolute top-0 left-0 right-0 bottom-0 flex-center">
-            <MoveUpRight className="transition-all duration-300 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:-translate-y-0" />
+            <MoveUpRight className="transition-all duration-300 -translate-x-full translate-y-full group-hover/link-switch:translate-x-0 group-hover/link-switch:-translate-y-0" />
           </div>
         </div>
       </Link>
