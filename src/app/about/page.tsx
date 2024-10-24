@@ -15,12 +15,12 @@ import AboutWrapperContent from "@/components/atoms/About/wrapper-content";
 export default function About() {
   return (
     <div className="page-content flex-col-center">
-      <section className="container">
-        <div className="rounded-2xl overflow-hidden mb-8 m-auto w-fit">
-          <Image src={avtImage} alt="avatar" width={360} height={390} />
+      <section className="container flex-col-center lg:flex-row lg:gap-10">
+        <div className="rounded-2xl overflow-hidden mb-8 m-auto max-w-96 aspect-auto lg:m-0 lg:max-w-md xs:max-w-2xl">
+          <Image src={avtImage} alt="avatar" />
         </div>
 
-        <div className="flex-col-center text-center">
+        <div className="flex-col-center text-center lg:items-start">
           <motion.div
             className="flex-center flex-nowrap gap-3 border-primary p-2.5 pr-6 mb-5 rounded-full"
             initial={ANIMATION_SECTION.initial}
@@ -38,12 +38,12 @@ export default function About() {
             </div>
           </motion.div>
 
-          <div className="text-3xl font-semibold mb-2.5">
+          <div className="text-3xl font-semibold mb-2.5 lg:text-5xl xs:text-7xl lg:mb-5">
             I&apos;m <span className="text-[#e58a7f]">Nguyễn Thái Hà</span>
           </div>
 
-          <div className="flex-center gap-2 text-[22px] font-medium mb-8">
-            <div className="">I specialize in</div>
+          <div className="flex-center gap-3 text-[22px] mb-8 lg:text-2xl xs:text-4xl">
+            <div className="font-medium ">I specialize in</div>
             <div className="bg-[var(--primary-bg)] px-4 py-2 rounded-xl">
               <TypeAnimation
                 preRenderFirstString={true}
@@ -57,17 +57,17 @@ export default function About() {
                   2000,
                 ]}
                 speed={30}
-                style={{ fontSize: "22px" }}
+                style={{ fontWeight: "bold" }}
                 repeat={Infinity}
               />
             </div>
           </div>
 
           <div className="border-primary rounded-2xl p-6">
-            <div className="flex-center items-start flex-nowrap gap-5">
+            <div className="flex items-center justify-between flex-nowrap gap-5">
               <div className="text-2xl text-left font-bold">About Me</div>
 
-              <div className="flex-center items-start gap-3">
+              <div className="flex-center items-end gap-3">
                 {FOOTER_SOCIALS.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -84,7 +84,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="text-[var(--secondary-text)] mt-3">
+            <div className="text-[var(--secondary-text)] mt-3 ">
               Creative professional specializing in web development, bringing
               imaginative solutions to life through innovative and visually
               compelling designs.
