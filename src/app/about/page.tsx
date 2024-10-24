@@ -1,75 +1,118 @@
 "use client";
+import avtImage from "@/images/avt.jpg";
 import WavingHand from "@/images/waving-hand.svg";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ANIMATION_SECTION_1 } from "@/constants/home.constants";
+import { TypeAnimation } from "react-type-animation";
+import { ANIMATION_SECTION, FOOTER_SOCIALS } from "@/constants/constans";
+import Link from "next/link";
+import { MY_CARREER } from "@/constants/about.constants";
+import { ANIMATION_CONTENT_SCROLLUP } from "@/constants/home.constants";
+import WrapperSection from "@/components/atoms/Home/wrapper-section";
+import AboutWrapperContent from "@/components/atoms/About/wrapper-content";
 
 export default function About() {
   return (
-    <div className="mx-auto">
-      <div className="page-content flex flex-col items-center">
-        <section className="container flex flex-col items-center gap-8 text-center">
+    <div className="page-content flex-col-center">
+      <section className="container">
+        <div className="rounded-2xl overflow-hidden mb-8 m-auto w-fit">
+          <Image src={avtImage} alt="avatar" width={360} height={390} />
+        </div>
+
+        <div className="flex-col-center text-center">
           <motion.div
-            className="flex flex-nowrap items-center gap-3 border-[var(--primary-border)] border-2 border-solid  p-2.5 pr-6 rounded-full"
-            initial={ANIMATION_SECTION_1.initial}
-            animate={ANIMATION_SECTION_1.animate}
+            className="flex-center flex-nowrap gap-3 border-primary p-2.5 pr-6 mb-5 rounded-full"
+            initial={ANIMATION_SECTION.initial}
+            animate={ANIMATION_SECTION.animate}
             transition={{
-              duration: ANIMATION_SECTION_1.duration,
-              delay: 0 * ANIMATION_SECTION_1.delay,
+              duration: 0 * ANIMATION_SECTION.duration,
+              delay: 0 * ANIMATION_SECTION.delay,
             }}
           >
             <div className="w-14 h-14 rounded-full bg-[var(--primary-bg)] p-4">
               <Image src={WavingHand} alt="waving-hand" />
             </div>
             <div className="text-[var(--medium-text)] text-nowrap">
-              Hello! Im Pragadesh
+              Hello, Explore My Portfolio
             </div>
           </motion.div>
 
-          <motion.div
-            className="text-3xl font-bold"
-            initial={ANIMATION_SECTION_1.initial}
-            animate={ANIMATION_SECTION_1.animate}
-            transition={{
-              duration: ANIMATION_SECTION_1.duration,
-              delay: 1 * ANIMATION_SECTION_1.delay,
-            }}
-          >
-            Revitalize Your Digital Impact through Boundless Creativity
-          </motion.div>
+          <div className="text-3xl font-semibold mb-2.5">
+            I&apos;m <span className="text-[#e58a7f]">Nguyễn Thái Hà</span>
+          </div>
 
-          <motion.div
-            className="text-[var(--secondary-text)]"
-            initial={ANIMATION_SECTION_1.initial}
-            animate={ANIMATION_SECTION_1.animate}
-            transition={{
-              duration: ANIMATION_SECTION_1.duration,
-              delay: 2 * ANIMATION_SECTION_1.delay,
-            }}
-          >
-            Effortlessly elevate your online presence by crafting a standout
-            portfolio with the ease and versatility of our comprehensive
-            template
-          </motion.div>
+          <div className="flex-center gap-2 text-[22px] font-medium mb-8">
+            <div className="">I specialize in</div>
+            <div className="bg-[var(--primary-bg)] px-4 py-2 rounded-xl">
+              <TypeAnimation
+                preRenderFirstString={true}
+                sequence={[
+                  1000,
+                  "Designing",
+                  2000,
+                  "Templating",
+                  2000,
+                  "Development",
+                  2000,
+                ]}
+                speed={30}
+                style={{ fontSize: "22px" }}
+                repeat={Infinity}
+              />
+            </div>
+          </div>
 
-          <motion.button
-            className="button-primary"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            initial={ANIMATION_SECTION_1.initial}
-            animate={{
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: ANIMATION_SECTION_1.duration,
-                delay: 3 * ANIMATION_SECTION_1.delay,
-              },
-            }}
-          >
-            Get the contact
-          </motion.button>
-        </section>
-      </div>
+          <div className="border-primary rounded-2xl p-6">
+            <div className="flex-center items-start flex-nowrap gap-5">
+              <div className="text-2xl text-left font-bold">About Me</div>
+
+              <div className="flex-center items-start gap-3">
+                {FOOTER_SOCIALS.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      className="rounded-full overflow-hidden p-2.5 bg-[#1c1c21] border-primary transition-transform duration-200 hover:-translate-y-1"
+                    >
+                      <Icon height={22} width={22} />
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="text-[var(--secondary-text)] mt-3">
+              Creative professional specializing in web development, bringing
+              imaginative solutions to life through innovative and visually
+              compelling designs.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <WrapperSection
+        title={MY_CARREER.title}
+        desc={MY_CARREER.desc}
+        animationScroll={ANIMATION_CONTENT_SCROLLUP}
+      >
+        {MY_CARREER.items.map((item) => {
+          return (
+            <AboutWrapperContent
+              dateTime={item.dateTime}
+              year={item.year}
+              title={item.title}
+              desc={item.desc}
+              animationScroll={ANIMATION_CONTENT_SCROLLUP}
+              key={item.title}
+            >
+              sdgsfd
+            </AboutWrapperContent>
+          );
+        })}
+      </WrapperSection>
     </div>
   );
 }

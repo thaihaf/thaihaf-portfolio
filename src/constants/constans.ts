@@ -1,5 +1,12 @@
 import { BriefcaseBusiness, Facebook, House, Instagram, Linkedin, Rocket, Twitter, UserRound } from "lucide-react";
 
+export const ANIMATION_SECTION = {
+	duration: 0.35,
+	delay: 0.2,
+	initial: { opacity: 0, y: -20 },
+	animate: { opacity: 1, y: 0 },
+};
+
 export const HEADER_ITEMS = [
 	{ label: "Home", value: 0, href: "/", icon: House },
 	{ label: "About", value: 1, href: "/about", icon: UserRound },

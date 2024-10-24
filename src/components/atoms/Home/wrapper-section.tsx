@@ -10,7 +10,7 @@ interface WrapperContentProps {
   title: string | React.ReactNode;
   desc: string | React.ReactNode;
 }
-export default function WrapperContent({
+export default function WrapperSection({
   children,
   animationScroll,
   title,

@@ -10,6 +10,8 @@
   --primary-text: #ffffff;
   --secondary-text: #797b85;
   --medium-text: #aeb0b6;
+  --red-color: #d85040;
+  --pink-color: #e58a7f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +24,7 @@
     --secondary-text: #797b85;
     --medium-text: #aeb0b6;
     --red-color: #d85040;
+    --pink-color: #e58a7f;
   }
 }
 
@@ -47,7 +50,7 @@ body {
   }
 
   .border-primary {
-    @apply border-[var(--primary-border)] border-[1px] border-solid ;
+    @apply border-[var(--primary-border)] border-[1px] border-solid;
   }
 }
 

@@ -1,9 +1,3 @@
-export const ANIMATION_SECTION_1 = {
-	duration: 0.35,
-	delay: 0.2,
-	initial: { opacity: 0, y: -20 },
-	animate: { opacity: 1, y: 0 },
-};
 export const ANIMATION_CONTENT_SCROLLUP = {
 	duration: 0.35,
 	delay: 0.2,

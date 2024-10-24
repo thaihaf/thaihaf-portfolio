@@ -57,7 +57,7 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 className={clsx(
-                  "group/link relative",
+                  "group/link relative transition-all duration-200",
                   "text-[var(--secondary-text)] text-lg flex-center gap-2.5 capitalize",
                   isDone
                     ? "hover:!text-[var(--primary-text)]"
@@ -72,7 +72,7 @@ export default function Footer() {
                   </div>
                 ) : (
                   <div className="absolute left-[110%] overflow-hidden">
-                    <MoveRight className="transition-all duration-300 -translate-x-full group-hover/link:translate-x-0" />
+                    <MoveRight className="transition-all duration-200 -translate-x-full group-hover/link:translate-x-0" />
                   </div>
                 )}
               </Link>
@@ -90,14 +90,14 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 className={clsx(
-                  "group/social relative",
+                  "group/social relative transition-all duration-200",
                   "text-[var(--secondary-text)] text-lg flex-center gap-2.5 capitalize hover:!text-[var(--primary-text)]"
                 )}
               >
                 {link.label}
 
                 <div className="absolute left-[110%] overflow-hidden">
-                  <MoveRight className="transition-all duration-300 -translate-x-full group-hover/social:translate-x-0" />
+                  <MoveRight className="transition-all duration-200 -translate-x-full group-hover/social:translate-x-0" />
                 </div>
               </Link>
             );
